@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Aacute;-&auml;&aring;&eth;&aring;&acirc;&uuml;&yuml;">
+		<param name="Local" value="b_trees.htm">
+		<param name="URL" value="b_trees.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Iuml;&icirc;&egrave;&ntilde;&ecirc; &yacute;&euml;&aring;&igrave;&aring;&iacute;&ograve;&agrave;">
+		<param name="Local" value="find_elem.htm">
+		<param name="URL" value="find_elem.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Iuml;&icirc;&egrave;&ntilde;&ecirc; max/min &yacute;&euml;&aring;&igrave;&aring;&iacute;&ograve;&agrave;">
+		<param name="Local" value="find_max_min.htm">
+		<param name="URL" value="find_max_min.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Acirc;&ntilde;&ograve;&agrave;&acirc;&ecirc;&agrave; &yacute;&euml;&aring;&igrave;&aring;&iacute;&ograve;&agrave;">
+		<param name="Local" value="insert_elem.htm">
+		<param name="URL" value="insert_elem.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Oacute;&auml;&agrave;&euml;&aring;&iacute;&egrave;&aring; &yacute;&euml;&aring;&igrave;&aring;&iacute;&ograve;&agrave;">
+		<param name="Local" value="remove_elem.htm">
+		<param name="URL" value="remove_elem.htm">
+		</OBJECT>
+</UL>
+</BODY></HTML>
