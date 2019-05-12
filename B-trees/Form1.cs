@@ -19,6 +19,7 @@ namespace B_trees
         {
             InitializeComponent();
 
+            DeleteMenu(GetSystemMenu(GetConsoleWindow(), false), SC_CLOSE, MF_BYCOMMAND);
             // Hide console
             ShowWindow(GetConsoleWindow(), SW_HIDE);
 
@@ -151,13 +152,11 @@ namespace B_trees
             
         }
 
-  
-       
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowMenu();
-        }
+        } //main menu index choosen
 
         static void WriteLineCentered(string text)//вывод текста в консоль посередине
         {
@@ -169,15 +168,29 @@ namespace B_trees
             Console.WriteLine(text);
         }
 
-        //this for show/hide console
-        [DllImport("kernel32.dll")]
-        static extern IntPtr GetConsoleWindow();
+        //this is for show/hide console
+
+        //[DllImport("kernel32.dll")]
+       // static extern IntPtr GetConsoleWindow();
 
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
+
+        //for enabling X console (button X enabled, you cant close console by click the button)
+        private const int MF_BYCOMMAND = 0x00000000;
+        public const int SC_CLOSE = 0xF060;
+
+        [DllImport("user32.dll")]
+        public static extern int DeleteMenu(IntPtr hMenu, int nPosition, int wFlags);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+
+        [DllImport("kernel32.dll", ExactSpelling = true)]
+        private static extern IntPtr GetConsoleWindow();
 
     }
 }

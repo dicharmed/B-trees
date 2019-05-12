@@ -11,7 +11,6 @@ namespace B_trees
         private TreeNode root;
         public TreeNode Root
         {
-
             get { return root; }
         }
 
@@ -220,18 +219,7 @@ namespace B_trees
 
             return successor;
         }
-
-        //O(Log n) Mark Node as deleted
-        public void SoftDelete(int data)
-        {
-            //find node then set property isdeleted to true
-            TreeNode toDelete = Find(data);
-            if (toDelete != null)
-            {
-                toDelete.Delete();
-            }
-        }
-
+      
         //find smallest value in the tree
         public Nullable<int> Smallest()
         {
@@ -260,35 +248,7 @@ namespace B_trees
             }
         }
 
-
-        //Tree Traversal 
-        //In order - goes left to right basically find the left leaf node then its parent then see if the right node has a left node then recursivly go up the tree
-        // basically keep going left then recursive to parent then right
-        //numbers will be in ascending order
-        public void InOrderTraversal()
-        {
-            if (root != null)
-                root.InOrderTraversal();
-        }
-
-
-        //Preorder
-        //Go to the Root then the left then the right recursively
-        public void PreorderTraversal()
-        {
-            if (root != null)
-                root.PreOrderTraversal();
-        }
-
-        //Postorder
-        //Go to the Left then the right then the root recursively
-        public void PostorderTraversal()
-        {
-            if (root != null)
-                root.PostorderTraversal();
-        }
-
-
+        
         public int NumberOfLeafNodes()
         {
             //if root is null then  number of leafs is zero
@@ -307,7 +267,6 @@ namespace B_trees
             return root.Height();
         }
 
-
         //Check if the binary tree is balanced. A balanced tree occurs when the height of two subtrees of any node do not differe more than 1.
         public bool IsBalanced()
         {
@@ -318,14 +277,6 @@ namespace B_trees
 
             return root.IsBalanced();
         }
-
-
-        //There are many self balancing trees
-        //Some to look at are
-        //Red Black Trees
-        //AVL Trees
-
-
 
 
     }

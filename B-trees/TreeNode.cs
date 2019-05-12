@@ -147,53 +147,6 @@ namespace B_trees
             }
         }
 
-        //Number return in ascending order
-        //Left->Root->Right Nodes recursively of each subtree 
-        public void InOrderTraversal()
-        {
-            //first go to left child its children will be null so we print its data
-            if (leftNode != null)
-                leftNode.InOrderTraversal();
-            //Then we print the root node 
-            Console.Write(data + " ");
-
-            //Then we go to the right node which will print itself as both its children are null
-            if (rightNode != null)
-                rightNode.InOrderTraversal();
-        }
-
-
-        //Root->Left->Right Nodes recursively of each subtree 
-        public void PreOrderTraversal()
-        {
-            //First we print the root node 
-            Console.Write(data + " ");
-
-            //Then go to left child its children will be null so we print its data
-            if (leftNode != null)
-                leftNode.PreOrderTraversal();
-
-            //Then we go to the right node which will print itself as both its children are null
-            if (rightNode != null)
-                rightNode.PreOrderTraversal();
-        }
-
-        //Left->Right->Root Nodes recursively of each subtree 
-        public void PostorderTraversal()
-        {
-            //First go to left child its children will be null so we print its data
-            if (leftNode != null)
-                leftNode.PostorderTraversal();
-
-            //Then we go to the right node which will print itself as both its children are null
-            if (rightNode != null)
-                rightNode.PostorderTraversal();
-
-            //Then we print the root node 
-            Console.Write(data + " ");
-        }
-
-
         public int Height()
         {
             //return 1 when leaf node is found
