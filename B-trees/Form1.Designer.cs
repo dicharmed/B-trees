@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.ListBox1 = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listBox1
+            // ListBox1
             // 
-            this.listBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 26;
-            this.listBox1.Items.AddRange(new object[] {
+            this.ListBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.ListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ListBox1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ListBox1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.ListBox1.FormattingEnabled = true;
+            this.ListBox1.ItemHeight = 26;
+            this.ListBox1.Items.AddRange(new object[] {
             "Теория",
             "Демонстрация",
             "Тестирование",
             "Выход"});
-            this.listBox1.Location = new System.Drawing.Point(38, 60);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(221, 104);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.ListBox1.Location = new System.Drawing.Point(38, 60);
+            this.ListBox1.Name = "ListBox1";
+            this.ListBox1.Size = new System.Drawing.Size(221, 104);
+            this.ListBox1.TabIndex = 0;
+            this.ListBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -92,7 +92,7 @@
             this.ClientSize = new System.Drawing.Size(292, 185);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.ListBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Меню";
@@ -104,7 +104,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox ListBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Splitter splitter1;

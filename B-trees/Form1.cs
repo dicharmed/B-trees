@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace B_trees
 {
@@ -19,25 +20,29 @@ namespace B_trees
         {
             InitializeComponent();
 
+            //for blocking X from console
             DeleteMenu(GetSystemMenu(GetConsoleWindow(), false), SC_CLOSE, MF_BYCOMMAND);
+
             // Hide console
             ShowWindow(GetConsoleWindow(), SW_HIDE);
 
             // Show console
-           // ShowWindow(handle, SW_SHOW);
+            // ShowWindow(handle, SW_SHOW);
         }
 
         private void ShowMenu()
         {
-            switch (listBox1.SelectedIndex)
+            switch (ListBox1.SelectedIndex)
             {
                 case 0:
                     //theory  
                     Help.ShowHelp(this, "helpTheory.chm", "b_trees.htm");
                     break;
-                case 1:
+                case 1:                    
                     // Show console
                     ShowWindow(GetConsoleWindow(), SW_SHOW);
+                    //show title
+                    title();
                     //show demo menu
                     ShowDemoMenu();
                     break;
@@ -54,17 +59,35 @@ namespace B_trees
 
         private void DemoMenu()
         {
-            WriteLineCentered("Демонстрация\n");
-            Console.WriteLine("\n");
-            Console.WriteLine("1. Добавить элемент\n2. Удалить элемент\n3. Найти минимальный элемент\n4. Найти максимальный элемент\n5. Найти высоту дерева\n6. Найти количество листьев дерева\n7. Сбалансированное дерево?\n8. Печать дерева\n9. Выход\n");
-
+           Console.WriteLine("1. Добавить элемент\n2. Удалить элемент\n3. Найти минимальный элемент\n4. Найти максимальный элемент\n5. Найти высоту дерева\n6. Найти количество листьев дерева\n7. Сбалансированное дерево?\n8. Печать дерева\n9. Выход\n");
         }
+
+        private void title()
+        {
+            WriteLineCentered("ФЕДЕРАЛЬНОЕ АГЕНТСТВО ПО РЫБОЛОВСТВУ");
+            WriteLineCentered("ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕУ");
+            WriteLineCentered("ВЫСШЕГО ПРОФЕССИОНАЛЬНОГО ОБРАЗОВАНИЯ");
+            WriteLineCentered("<<АСТРАХАНСКИЙ ГОСУДАРСТВЕННЫЙ ТЕХНИЧЕСКИЙ УНИВЕРСИТЕТ>>");
+            WriteLineCentered("ИНСТИТУТ ИНФОРМАЦИОННЫХ ТЕХНОЛОГИЙ И КОММУНИКАЦИЙ");
+            WriteLineCentered("КАФЕДРА");
+            WriteLineCentered("<<АВТОМАТИЗИРОВАННЫЕ СИСТЕМЫ ОБРАБОТКИ ИНФОРМАЦИИ И УПРАВЛЕНИЯ>>\n");
+
+            WriteLineCentered("КУРСОВАЯ РАБОТА");
+            WriteLineCentered("по дисциплине\n");
+
+            WriteLineCentered("<<Алгоритмы и структуры данных>>");
+            WriteLineCentered("на тему:<<Учебно-демонстрационная программа модуля для работы с бинарным деревом>>\n");
+            WriteLineCentered("Выполнила студентка группы ЗИПРб-31");
+            WriteLineCentered("Калиева Диана\n");
+        }
+
         private void ShowDemoMenu()
         {
-            int d, element;            
+            int d, element;
             DemoMenu();
-            do {
-                Console.WriteLine("\n");
+            this.Close(); //close form1(main menu)
+            do
+            {               
                 Console.WriteLine("Выберете пункт меню ->");
 
                 //выбор пункта меню
@@ -77,7 +100,7 @@ namespace B_trees
                         element = Convert.ToInt32(Console.ReadLine());
                         binaryTree.Insert(element);
                         Console.WriteLine($"Элемент {element} был вставлен в дерево");
-                        break;                   
+                        break;
                     case 2://REMOVE
                         if (binaryTree.Root != null)
                         {
@@ -93,7 +116,8 @@ namespace B_trees
                             {
                                 Console.WriteLine($"Элемент {element} не существует в дереве!");
                             }
-                        }else Console.WriteLine("В дереве нет ни одного элемента. Сначала добавьте элемент в дерево!");
+                        }
+                        else Console.WriteLine("В дереве нет ни одного элемента. Сначала добавьте элемент в дерево!");
                         break;
                     case 3: //FIND min ELEMENT   
                         if (binaryTree.Root != null)
@@ -127,8 +151,8 @@ namespace B_trees
                         if (binaryTree.Root != null)
                         {
                             bool balanced = binaryTree.IsBalanced();
-                        if(balanced == true) Console.WriteLine("Дерево сбалансированное");
-                        else Console.WriteLine("Дерево не сбалансированное");
+                            if (balanced == true) Console.WriteLine("Дерево сбалансированное");
+                            else Console.WriteLine("Дерево не сбалансированное");
                         }
                         else Console.WriteLine("В дереве нет ни одного элемента. Сначала добавьте элемент в дерево!");
                         break;
@@ -138,25 +162,32 @@ namespace B_trees
                             binaryTree.Print();
                         }
                         else Console.WriteLine("В дереве нет ни одного элемента. Сначала добавьте элемент в дерево!");
-                        break; 
+                        break;
                     case 9: //EXIT
-                        ShowWindow(GetConsoleWindow(), SW_HIDE);
-                        Console.Clear();
+                        ShowWindow(GetConsoleWindow(), SW_HIDE); //hide console
+                        Console.Clear();//clear console
+                        Thread t1 = new Thread(new ThreadStart(callForm));//new thread for calling form1
+                        t1.Start(); //open form1
                         break;
                     default:
                         Console.WriteLine("Такого пункта меню не существует...");
                         break;
                 }
 
-            } while (d < 9);
-            
+            } while (true);
+
         }
 
+        static void callForm() //for open form1 (main menu)
+        {
+            Form1 formm = new Form1();
+            Application.Run(formm);
+        }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowMenu();
-        } //main menu index choosen
+        }
 
         static void WriteLineCentered(string text)//вывод текста в консоль посередине
         {
@@ -171,7 +202,7 @@ namespace B_trees
         //this is for show/hide console
 
         //[DllImport("kernel32.dll")]
-       // static extern IntPtr GetConsoleWindow();
+        // static extern IntPtr GetConsoleWindow();
 
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
@@ -190,7 +221,6 @@ namespace B_trees
         private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
 
         [DllImport("kernel32.dll", ExactSpelling = true)]
-        private static extern IntPtr GetConsoleWindow();
-
+        private static extern IntPtr GetConsoleWindow();        
     }
 }
