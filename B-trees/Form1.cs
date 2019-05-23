@@ -88,7 +88,7 @@ namespace B_trees
             this.Close(); //close form1(main menu)
             do
             {               
-                Console.WriteLine("Выберете пункт меню ->");
+                Console.WriteLine("\nВыберете пункт меню ->");
 
                 //выбор пункта меню
                 d = Convert.ToInt32(Console.ReadLine());
@@ -97,24 +97,40 @@ namespace B_trees
                 {
                     case 1://ADD
                         Console.WriteLine("Введите число для вставки: ");
-                        element = Convert.ToInt32(Console.ReadLine());
-                        binaryTree.Insert(element);
-                        Console.WriteLine($"Элемент {element} был вставлен в дерево");
+                        try
+                        {
+                            element = Convert.ToInt32(Console.ReadLine());
+                            binaryTree.Insert(element);
+                            Console.WriteLine($"Элемент {element} был вставлен в дерево");
+                            
+                        }catch (Exception e)
+                        {
+                            Console.WriteLine("Вводите только цифры!");
+                        }                            
+       
                         break;
                     case 2://REMOVE
                         if (binaryTree.Root != null)
                         {
-                            Console.WriteLine("Введите число для удаления: ");
-                            element = Convert.ToInt32(Console.ReadLine());
-                            var rez = binaryTree.FindRecursive(element);
-                            if (rez != null)
+                            try
                             {
-                                binaryTree.Remove(element);
-                                Console.WriteLine($"Элемент {element} был удален из дерева");
+                                Console.WriteLine("Введите число для удаления: ");
+                                element = Convert.ToInt32(Console.ReadLine());
+                                var rez = binaryTree.FindRecursive(element);
+                                if (rez != null)
+                                {
+                                    binaryTree.Remove(element);
+                                    Console.WriteLine($"Элемент {element} был удален из дерева");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Элемент {element} не существует в дереве!");
+                                }
                             }
-                            else
+
+                            catch
                             {
-                                Console.WriteLine($"Элемент {element} не существует в дереве!");
+                                Console.WriteLine("Вводите только цифры!");
                             }
                         }
                         else Console.WriteLine("В дереве нет ни одного элемента. Сначала добавьте элемент в дерево!");
